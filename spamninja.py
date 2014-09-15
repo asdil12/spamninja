@@ -23,7 +23,10 @@ def get_as_networks(as_id):
 	finally:
 		sock.close()
 
-cidr = open(cidr_file, "r").read()
+try:
+	cidr = open(cidr_file, "r").read()
+except IOError:
+	cidr = ""
 
 if not "### BEGIN SPAMNINJA SECTION" in cidr:
 	cidr += "\n### BEGIN SPAMNINJA SECTION\n### END SPAMNINJA SECTION\n"
